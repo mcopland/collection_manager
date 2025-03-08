@@ -19,5 +19,12 @@ class Card:
     unlocked_borders: List[str] = field(default_factory=list)
     unlocked_effects: List[str] = field(default_factory=list)
 
+    # MasteryState
+    mastery_level: int = 0
+    total_mastery_experience: int = 0
+
+    # RewardState
+    in_token_shop: bool = False
+
     def __str__(self):
         return json.dumps(asdict(self), indent=4)
