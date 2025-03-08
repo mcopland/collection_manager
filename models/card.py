@@ -6,11 +6,18 @@ from typing import List
 @dataclass
 class Card:
     # CollectionState
+    in_deck: bool = False
+    owned: bool = False
+    token_card: bool = False
+
     boosters_lifetime: int = 0
     boosters: int = 0
     infinity_split_count: int = 0
-    token_card: bool = False
+    variant_count: int = 0
+
+    time_created: str = field(default_factory=str)
     unlocked_borders: List[str] = field(default_factory=list)
+    unlocked_effects: List[str] = field(default_factory=list)
 
     def __str__(self):
         return json.dumps(asdict(self), indent=4)
