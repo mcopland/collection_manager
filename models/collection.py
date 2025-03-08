@@ -9,6 +9,7 @@ class CardCollection:
 
     def __init__(self):
         self.cards: Dict[str, Card] = {}
+        self.load()
 
     def load(self) -> None:
         """Load and parse collection data from game state files."""

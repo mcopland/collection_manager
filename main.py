@@ -5,7 +5,6 @@ from .models.collection import CardCollection
 def main() -> None:
     try:
         collection = CardCollection()
-        collection.load()
     except FileNotFoundError as e:
         print(f"Error: {e}")
     except json.JSONDecodeError:
