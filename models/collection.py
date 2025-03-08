@@ -28,8 +28,8 @@ class CardCollection:
     def __get_or_create_card(self, card_id: str) -> Card:
         return self.cards.setdefault(card_id, Card())
 
-    def __load_cards(self, server_state: dict) -> None:
-        for card_id, card_data in server_state["CardDefStats"]["Stats"].items():
+    def __load_cards(self, collection_state: dict) -> None:
+        for card_id, card_data in collection_state["CardDefStats"]["Stats"].items():
             if card_id == "$type":
                 continue
             current_card = self.__get_or_create_card(card_id)
