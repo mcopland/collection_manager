@@ -9,9 +9,13 @@ class CardCollection:
 
     def __init__(self):
         self.cards: Dict[str, Card] = {}
-        self.load()
+        self.__load()
 
-    def load(self) -> None:
+    def get_card(self, card_id: str):
+        """Retrieve a card by ID."""
+        return self.cards.get(card_id, None)
+
+    def __load(self) -> None:
         """Load and parse collection data from game state files."""
         collection_state = self.__load_json(FILE_PATHS["collection"])["ServerState"]
         mastery_state = self.__load_json(FILE_PATHS["mastery"])["ServerState"]
@@ -24,10 +28,6 @@ class CardCollection:
         self.__set_unlocked_effects(collection_state)
         self.__set_card_mastery(mastery_state)
         self.__set_shop_rotation(reward_state)
-
-    def get_card(self, card_id: str):
-        """Retrieve a card by ID."""
-        return self.cards.get(card_id, None)
 
     def __load_json(self, file_path) -> dict:
         """Load data from JSON file."""
